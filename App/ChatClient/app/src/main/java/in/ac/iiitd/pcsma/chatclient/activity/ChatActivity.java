@@ -24,6 +24,7 @@ import java.util.List;
 
 import in.ac.iiitd.pcsma.chatclient.R;
 import in.ac.iiitd.pcsma.chatclient.commons.Constants;
+import in.ac.iiitd.pcsma.chatclient.fragment.FriendListFragment;
 import in.ac.iiitd.pcsma.chatclient.fragment.GroupChatFragment;
 import in.ac.iiitd.pcsma.chatclient.fragment.PrivateChatFragment;
 
@@ -67,6 +68,7 @@ public class ChatActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new PrivateChatFragment());
         adapter.addFragment(new GroupChatFragment());
+        adapter.addFragment(new FriendListFragment());
         viewPager.setAdapter(adapter);
     }
 
@@ -80,6 +82,11 @@ public class ChatActivity extends AppCompatActivity {
         imageView = (ImageView) tabTwo.findViewById(R.id.custom_layout_image_view);
         imageView.setImageDrawable(getDrawable(R.drawable.ic_action_users));
         tabLayout.getTabAt(1).setCustomView(tabTwo);
+
+        LinearLayout tabThree = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        imageView = (ImageView) tabThree.findViewById(R.id.custom_layout_image_view);
+        imageView.setImageDrawable(getDrawable(R.drawable.ic_view_list));
+        tabLayout.getTabAt(2).setCustomView(tabThree);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

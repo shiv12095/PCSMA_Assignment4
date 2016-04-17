@@ -9,13 +9,23 @@ public class Constants {
 
     public static final String REGISTER_ENDPOINT = "/register";
 
+    public static final String GET_FRIENDS_ENDPOINT = "/getFriends";
+
     public static final String LOGIN_ENDPOINT = "/login";
+
+    public static final String CREATE_USER_PROFILE_ENDPOINT = "/createProfile";
 
     public static final int PASSWORD_LENGTH = 6;
 
     public static final String JSON_PARAMETER_USERNAME = "username";
 
     public static final String JSON_PARAMETER_PASSWORD = "password";
+
+    public static final String JSON_PARAMETER__PROFILE_NAME = "name";
+
+    public static final String JSON_PARAMETER_PHONE_NUMBER = "number";
+
+    public static final String JSON_PARAMETER_PHONE_NUMBERS = "phoneNumbers";
 
     public static final String SHARED_PREFS = "shared prefs";
 

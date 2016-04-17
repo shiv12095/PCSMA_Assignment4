@@ -91,11 +91,11 @@ public class LoginActivity extends AppCompatActivity {
                 if (registerUserResponse.getValidCredentials() == Constants.CODE_VALID_CREDENTIALS) {
                     editor.putString(Constants.ACCESS_TOKEN, registerUserResponse.getAccessToken());
                     editor.commit();
-                    Intent intent = new Intent(LoginActivity.this, ChatActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Username unavailable", Toast.LENGTH_SHORT).show();
                 }
             }
 
