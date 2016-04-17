@@ -1,6 +1,7 @@
 package in.ac.iiitd.pcsma.chatclient.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import in.ac.iiitd.pcsma.chatclient.R;
+import in.ac.iiitd.pcsma.chatclient.activity.TextActivity;
 import in.ac.iiitd.pcsma.chatclient.holder.FriendListViewHolder;
 import in.ac.iiitd.pcsma.chatclient.item.UserProfile;
 
@@ -37,6 +39,13 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListViewHolder
     public void onBindViewHolder(FriendListViewHolder holder, int position) {
         UserProfile userProfile = userProfileList.get(position);
         holder.getUserIdTextView().setText(userProfile.getUserId());
+        holder.getUserIdTextView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TextActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
