@@ -90,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (registerUserResponse.getValidCredentials() == Constants.CODE_VALID_CREDENTIALS) {
                     editor.putString(Constants.ACCESS_TOKEN, registerUserResponse.getAccessToken());
+                    editor.putString(Constants.USER_ID, userName);
                     editor.commit();
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                     startActivity(intent);
@@ -114,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (registerUserResponse.getValidCredentials() == Constants.CODE_VALID_CREDENTIALS) {
                     editor.putString(Constants.ACCESS_TOKEN, registerUserResponse.getAccessToken());
+                    editor.putString(Constants.USER_ID, userName);
                     editor.commit();
                     Intent intent = new Intent(LoginActivity.this, ChatActivity.class);
                     startActivity(intent);

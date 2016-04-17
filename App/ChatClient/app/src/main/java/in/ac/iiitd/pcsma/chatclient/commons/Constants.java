@@ -31,6 +31,10 @@ public class Constants {
 
     public static final String ACCESS_TOKEN = "accessToken";
 
+    public static final String USER_ID = "userId";
+
+    public static final String FRIEND_ID = "friendId";
+
     public static final int CODE_VALID_CREDENTIALS = 1;
 
     public static final int CODE_INVALID_CREDENTIALS = 0;
