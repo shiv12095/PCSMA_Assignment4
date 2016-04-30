@@ -6,6 +6,12 @@
     tools:context="in.ac.iiitd.pcsma.chatclient.fragment.GroupChatFragment"
     >
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Group"
+        android:id="@+id/fragment_grouo_create_group_button" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_group_chat_recycler_view"
         android:layout_width="match_parent"
