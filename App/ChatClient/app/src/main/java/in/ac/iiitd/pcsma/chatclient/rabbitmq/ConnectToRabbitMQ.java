@@ -54,7 +54,7 @@ public abstract class ConnectToRabbitMQ {
      * Connect to the broker and create the exchange
      * @return success
      */
-    public boolean connectToRabbitMQ()
+    public boolean connectToRabbitMQ(String routingKey)
     {
         if(mModel!= null && mModel.isOpen() )//already declared
             return true;

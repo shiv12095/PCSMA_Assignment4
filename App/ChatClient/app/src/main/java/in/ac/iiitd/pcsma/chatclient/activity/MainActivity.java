@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        }else{
+        } else{
             Intent intent = new Intent(MainActivity.this, ChatActivity.class);
             startActivity(intent);
             finish();

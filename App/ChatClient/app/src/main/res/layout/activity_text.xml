@@ -10,39 +10,44 @@
     android:orientation="vertical"
     tools:context="in.ac.iiitd.pcsma.chatclient.activity.TextActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/activity_text_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/activity_text_send"
+            android:autoText="true"
+            android:hint="type message" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/activity_text_message"
-                android:layout_weight="1" />
+        <Button
+            android:id="@+id/activity_text_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/background_floating_material_dark"
+            android:text="Send"
+            android:textColor="@color/background_material_light"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Send"
-                android:id="@+id/activity_text_send" />
+        <ListView
+            android:id="@+id/activity_messages_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@+id/activity_text_message"
+            android:layout_marginTop="2dp"
+            android:listSelector="@android:color/transparent"
+            android:transcriptMode="alwaysScroll"
+            android:divider="@null" />
 
-        </LinearLayout>
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <TextView
-                android:id="@+id/activity_text_output"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent" />
-        </ScrollView>
-
-    </LinearLayout>
-
+    </RelativeLayout>
 </LinearLayout>

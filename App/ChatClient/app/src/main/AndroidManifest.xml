@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +31,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.TextActivity"></activity>
+        <service
+            android:name=".service.RabbitMQService"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>

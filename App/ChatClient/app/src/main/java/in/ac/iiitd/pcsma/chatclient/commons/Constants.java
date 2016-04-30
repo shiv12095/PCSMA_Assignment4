@@ -5,6 +5,10 @@ package in.ac.iiitd.pcsma.chatclient.commons;
  */
 public class Constants {
 
+    public static final String APP_NAME = "ChatClient";
+
+    public static final String APP_DB_NAME = "ChatClientDB.db";
+
     public static final String BACKEND_URL = "http://192.168.48.246:8080";
 
     public static final String REGISTER_ENDPOINT = "/register";

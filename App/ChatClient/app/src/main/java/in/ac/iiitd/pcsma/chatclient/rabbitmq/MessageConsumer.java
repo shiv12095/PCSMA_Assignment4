@@ -59,9 +59,9 @@ public class MessageConsumer extends ConnectToRabbitMQ {
      * Create Exchange and then start consuming. A binding needs to be added before any messages will be delivered
      */
     @Override
-    public boolean connectToRabbitMQ()
+    public boolean connectToRabbitMQ(String routingKey)
     {
-        if(super.connectToRabbitMQ())
+        if(super.connectToRabbitMQ(routingKey))
         {
 
             try {
@@ -73,7 +73,7 @@ public class MessageConsumer extends ConnectToRabbitMQ {
                 return false;
             }
             if (MyExchangeType == "fanout")
-                AddBinding("");//fanout has default binding
+                AddBinding(routingKey);//fanout has default binding
 
             Running = true;
             mConsumeHandler.post(mConsumeRunner);
