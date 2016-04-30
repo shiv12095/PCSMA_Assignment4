@@ -109,5 +109,21 @@ public class DBAdapter {
         return list;
     }
 
-
+    public List<String> getFriendListForPrivateChats() {
+        List<String> friends = new ArrayList<>();
+        Log.d(getClass().toString(), "Calling raw query getFriendListForPrivateChats");
+        Cursor result = db.rawQuery("SELECT * FROM PrivateChat;", null);
+        while (result.moveToNext()) {
+            String friendId = "";
+            try {
+                friendId = result.getString(result.getColumnIndex("friend_id"));
+                if (!friends.contains(friendId)) {
+                    friends.add(friendId);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return friends;
+    }
 }
