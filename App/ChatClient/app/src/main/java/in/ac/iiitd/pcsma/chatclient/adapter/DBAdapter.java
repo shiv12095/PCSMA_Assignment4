@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -124,6 +125,7 @@ public class DBAdapter {
                 e.printStackTrace();
             }
         }
+        Collections.reverse(friends);
         return friends;
     }
 }
