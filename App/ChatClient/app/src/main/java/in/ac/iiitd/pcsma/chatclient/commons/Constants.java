@@ -39,6 +39,8 @@ public class Constants {
 
     public static final String FRIEND_ID = "friendId";
 
+    public static final String EXCHANGE_NAME = "exchangeName";
+
     public static final int CODE_VALID_CREDENTIALS = 1;
 
     public static final int CODE_INVALID_CREDENTIALS = 0;

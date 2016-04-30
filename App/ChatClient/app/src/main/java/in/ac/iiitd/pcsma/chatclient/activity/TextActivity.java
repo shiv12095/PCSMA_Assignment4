@@ -60,7 +60,15 @@ public class TextActivity extends AppCompatActivity {
         routingKey = "";
         QUEUE_NAME = "QUEUE_" + userId;
         EXCHANGE_NAME = "EXCHANGE_" + getQueueName(userId, friendId);
+        /*List<String> exchanges = dbAdapter.getAllExchanges();
+        if (!exchanges.contains(EXCHANGE_NAME)) {
+            Intent backgroundNewExchangeService = new Intent(this, StartExchangeService.class);
+            backgroundNewExchangeService.putExtra(Constants.EXCHANGE_NAME, EXCHANGE_NAME);
+            System.out.println("Starting background service for new exchange.");
+            startService(backgroundNewExchangeService);
+        }*/
         dbAdapter.insertIntoExchanges(EXCHANGE_NAME, "PRIVATE");
+        
 
         messagesContainer = (ListView) findViewById(R.id.activity_messages_container);
         messageET = (EditText) findViewById(R.id.activity_text_message);
@@ -142,8 +150,6 @@ public class TextActivity extends AppCompatActivity {
             displayMessage(message);
         }
     }
-
-
 
     private class send extends AsyncTask<String, Void, Void> {
 

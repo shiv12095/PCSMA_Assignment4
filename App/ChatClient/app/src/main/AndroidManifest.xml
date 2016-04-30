@@ -35,6 +35,10 @@
             android:name=".service.RabbitMQService"
             android:enabled="true"
             android:exported="true"/>
+        <service
+            android:name=".service.StartExchangeService"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>
