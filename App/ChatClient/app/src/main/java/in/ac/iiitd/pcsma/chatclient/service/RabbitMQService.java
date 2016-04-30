@@ -1,6 +1,7 @@
 package in.ac.iiitd.pcsma.chatclient.service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -11,8 +12,10 @@ import android.util.Log;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import in.ac.iiitd.pcsma.chatclient.activity.TextActivity;
 import in.ac.iiitd.pcsma.chatclient.adapter.DBAdapter;
 import in.ac.iiitd.pcsma.chatclient.commons.Constants;
+import in.ac.iiitd.pcsma.chatclient.commons.NotificationUtils;
 import in.ac.iiitd.pcsma.chatclient.rabbitmq.MessageConsumer;
 
 /**
@@ -27,6 +30,8 @@ public class RabbitMQService extends Service {
     private String QUEUE_NAME = "myqueue";
     private String EXCHANGE_NAME = "test";
 
+    private NotificationUtils notificationUtils;
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -36,6 +41,7 @@ public class RabbitMQService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         final DBAdapter dbAdapter = new DBAdapter();
+        notificationUtils = new NotificationUtils(getApplicationContext());
         sharedPreferences = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
         MESSAGE_QUEUE = sharedPreferences.getString(Constants.USER_ID, null);
         List<String> exchanges = dbAdapter.getAllExchanges();
@@ -52,9 +58,12 @@ public class RabbitMQService extends Service {
                         String text = "";
                         try {
                             text = new String(message, "UTF8");
-                            //String friendId = text.split(":")[0];
+                            String friendId = text.split(":")[0];
                             System.out.println("Here :" + friendId + "\t" + exchange);
                             dbAdapter.insertIntoPrivateChat(friendId, text);
+                            Intent resultIntent = new Intent(getApplicationContext(), TextActivity.class);
+                            resultIntent.putExtra(Constants.FRIEND_ID, friendId);
+                            showNotificationMessage(getApplicationContext(), friendId, text, resultIntent);
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
@@ -65,6 +74,12 @@ public class RabbitMQService extends Service {
             e.printStackTrace();
         }
         return START_STICKY;
+    }
+
+    private void showNotificationMessage(Context context, String userName, String message, Intent intent) {
+        notificationUtils = new NotificationUtils(context);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        notificationUtils.showNotificationMessage(userName,message, intent);
     }
 
     @Override

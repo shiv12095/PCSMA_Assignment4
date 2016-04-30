@@ -44,4 +44,7 @@ public class Constants {
     public static final int CODE_VALID_CREDENTIALS = 1;
 
     public static final int CODE_INVALID_CREDENTIALS = 0;
+
+    public static final int NOTIFICATION_ID = 100;
 }
+
